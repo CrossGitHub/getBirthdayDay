@@ -72,7 +72,7 @@ function prev() {
 }
 var imagesarr=[];
 imagesarr[0]="images/week_days/"+bornDay(userBirthday)+".jpg";
-imagesarr[1]="images/zodiaс_signs/"+zodiac(userBirthday)+".jpg";
+imagesarr[1]="images/zodiac_signs/"+zodiac(userBirthday)+".jpg";
 imagesarr[2]="images/elements/"+element(zodiac(userBirthday))+".jpg";
 imagesarr[3]="images/flowers/"+birthFlower(userBirthday)+".jpg";
 var fp2=document.getElementById("fp2");
