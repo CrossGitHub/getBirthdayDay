@@ -35,68 +35,68 @@ function element(zodiac) {
 }
 
 function yesIwant() {
-var userYear=prompt("Insert the year you was born:", "1970");
-if (userYear.replace(/\d/g, '').length){ 
-  alert ('Incorrect input. Insert number like 2000');
   var userYear=prompt("Insert the year you was born:", "1970");
-}
-var userMonth=prompt("Insert the month you was born:", "01")-1;
-if ((typeof userMonth)!="number"||isNaN(userMonth)||userMonth>11){ 
-  alert ('Incorrect input. Insert number from 1 to 12. For instance if it January, insert 1 or 01');
+  if (userYear.replace(/\d/g, '').length){ 
+    alert ('Incorrect input. Insert number like 2000');
+    var userYear=prompt("Insert the year you was born:", "1970");
+  }
   var userMonth=prompt("Insert the month you was born:", "01")-1;
-}
-var userDate=prompt("And finally insert the date", "01");
-if (userDate.replace(/\d/g, '').length||userDate>31){ 
-  alert ('Incorrect input. Insert number from 1 to 31. For instance if it is 1st of February insert 1 or 01');
+  if ((typeof userMonth)!="number"||isNaN(userMonth)||userMonth>11){ 
+    alert ('Incorrect input. Insert number from 1 to 12. For instance if it January, insert 1 or 01');
+    var userMonth=prompt("Insert the month you was born:", "01")-1;
+  }
   var userDate=prompt("And finally insert the date", "01");
-}
-var userBirthday=new Date(userYear, userMonth, userDate);
-// first section
-var topword=document.getElementsByClassName("topword");
-topword[0].innerHTML="Results:";
-// creating slider
-var num=0;
-function next() {
-  num++;
-  if (num>=imagesarr.length) {
-    num=0;
+  if (userDate.replace(/\d/g, '').length||userDate>31){ 
+    alert ('Incorrect input. Insert number from 1 to 31. For instance if it is 1st of February insert 1 or 01');
+    var userDate=prompt("And finally insert the date", "01");
   }
-  img.src=imagesarr[num];
-}
-function prev() {
-  num--;
-  if (num<0){
-    num=imagesarr.length-1;
+  var userBirthday=new Date(userYear, userMonth, userDate);
+  // first section
+  var topword=document.getElementsByClassName("topword");
+  topword[0].innerHTML="Results:";
+  // creating slider
+  var num=0;
+  function next() {
+    num++;
+    if (num>=imagesarr.length) {
+      num=0;
+    }
+    img.src=imagesarr[num];
   }
+  function prev() {
+    num--;
+    if (num<0){
+      num=imagesarr.length-1;
+    }
+    img.src=imagesarr[num];
+  }
+  var imagesarr=[];
+  imagesarr[0]="images/week_days/"+bornDay(userBirthday)+".jpg";
+  imagesarr[1]="images/zodiac_signs/"+zodiac(userBirthday)+".jpg";
+  imagesarr[2]="images/elements/"+element(zodiac(userBirthday))+".jpg";
+  imagesarr[3]="images/flowers/"+birthFlower(userBirthday)+".jpg";
+  var fp2=document.getElementById("fp2");
+  fp2.innerHTML="";
+  var sliderdiv=document.createElement("div");
+  fp2.appendChild(sliderdiv);
+  sliderdiv.id="sliderdiv";
+  var arrowleft=document.createElement("img");
+  var arrowright=document.createElement("img");
+  var img=document.createElement("img");
+  arrowleft.src="images/arrowleft.png";
+  arrowright.src="images/arrowright.png";
+  arrowleft.onclick=prev;
+  arrowright.onclick=next;
+  arrowleft.id="arrowleft";
+  arrowright.id="arrowright";
+  arrowleft.alt="arrowleft";
+  arrowright.alt="arrowright";
+  img.id="slidershowimage"
   img.src=imagesarr[num];
-}
-var imagesarr=[];
-imagesarr[0]="images/week_days/"+bornDay(userBirthday)+".jpg";
-imagesarr[1]="images/zodiac_signs/"+zodiac(userBirthday)+".jpg";
-imagesarr[2]="images/elements/"+element(zodiac(userBirthday))+".jpg";
-imagesarr[3]="images/flowers/"+birthFlower(userBirthday)+".jpg";
-var fp2=document.getElementById("fp2");
-fp2.innerHTML="";
-var sliderdiv=document.createElement("div");
-fp2.appendChild(sliderdiv);
-sliderdiv.id="sliderdiv";
-var arrowleft=document.createElement("img");
-var arrowright=document.createElement("img");
-var img=document.createElement("img");
-arrowleft.src="images/arrowleft.png";
-arrowright.src="images/arrowright.png";
-arrowleft.onclick=prev;
-arrowright.onclick=next;
-arrowleft.id="arrowleft";
-arrowright.id="arrowright";
-arrowleft.alt="arrowleft";
-arrowright.alt="arrowright";
-img.id="slidershowimage"
-img.src=imagesarr[num];
-img.alt="image with results";
-sliderdiv.appendChild(arrowleft);
-sliderdiv.appendChild(img);
-sliderdiv.appendChild(arrowright);
-// last section
-document.getElementById("button").innerHTML="Do it again!";
+  img.alt="image with results";
+  sliderdiv.appendChild(arrowleft);
+  sliderdiv.appendChild(img);
+  sliderdiv.appendChild(arrowright);
+  // last section
+  document.getElementById("button").innerHTML="Do it again!";
 }
